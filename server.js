@@ -2,7 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyparser = require('body-parser');
 const { static } = require('express');
-const Routes = require('./controllers/ticket_controllers')
+const Routes = require('./controllers/ticket_controllers');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
