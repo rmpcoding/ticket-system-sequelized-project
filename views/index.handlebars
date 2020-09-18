@@ -1,11 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ticket System Sequelized</title>
-</head>
-<body>
-  {{{body}}}
-</body>
-</html>
+<section>
+  <header class="header__landing-page">
+    <h1 class="section__title">Ticket Issuing System</h1>
+    <h3 class="section__title section__subtitle">Please scroll below to use this program</h3>
+    {{!-- <button class="btn">Click Me</button> --}}
+  </header>
+</section>
+
+<main>
+  <section class="section">
+    <form class="form" action="/api/tickets" method="POST">
+      <div class="form-group">
+        <label class="label" for="ticket_name">Describe Issue:</label>
+      </div>
+      <input class="form-input" type="text" id="ticket_name" name="ticket_name" /><br /><br />
+      <input class="btn btn-primary" type="submit" value="Submit" />
+    </form>
+  </section>
+
+  <section class="section">
+    <div class="grid-container">
+      <div class="grid-container-item">
+        <ul class="list">
+          {{#each tickets}}
+          {{#unless this.completed}}
+          <p class="item-todo" data-id={{this.id}}>{{this.id}}. 
+            <span>{{this.ticket_name}}</span> 
+              <span> 
+                <button class="btn btn-send">Send
+                </button>
+            </span>
+          </p>
+          {{/unless}}
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="grid-container-item">
+        <ul class="list completed-list">
+          {{#each tickets}}
+            {{#if this.completed}}
+            <p class="item" data-id={{this.id}}>{{this.id}}. 
+              <span>{{this.ticket_name}}</span> 
+                <span> 
+                  <button class="btn btn-delete">Complete
+                  </button>
+              </span>
+            </p> 
+            {{/if}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="section footer">
+  <nav class="nav">
+    hello world
+  </nav>
+</footer>

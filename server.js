@@ -16,7 +16,6 @@ app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
 app.use(static('public'))
 
-// still need to connect routes
 app.use(Routes)
 
 app.listen(PORT, () => {

@@ -1,5 +1,6 @@
+const { Model } = require('sequelize');
 const Sequelize = require('sequelize');
-const mysql = require('mysql2');
+
 // NOTE: Path is configured into dotenv temporarily but will be omitted after server.js file is up and running
 require('dotenv').config({
     path:
@@ -13,8 +14,14 @@ const sequelize = new Sequelize(
     process.env.DB_PASS,
     {
         host: 'localhost',
+        port: 3306,
         dialect: 'mysql',
-    }
+        pool: {
+            max: 5,
+            min: 0,
+            idle: 10000
+          }
+    },
 );
 
 // Testing connection:
@@ -26,3 +33,5 @@ sequelize
     .catch((err) => {
         console.error('Unable to connect to the database:', err);
     });
+
+module.exports = sequelize;
