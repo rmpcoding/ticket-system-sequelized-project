@@ -1,10 +1,11 @@
 const Router = require('express').Router()
-const Ticket = require('../models/ticket')
+const db = require('../models')
 
 Router.get('/', (req, res) => {
-  ticket = req.body.ticket_name;
-  console.log(ticket)
-  res.render('index')
+  db.Ticket.findAll({}).then(function(dbTicket) {
+    // We have access to the todos as an argument inside of the callback function
+    res.json(dbTicket);
+  });
 })
 
 module.exports = Router;
