@@ -10,5 +10,3 @@ router.get('/api/tickets', (req, res) => {
 });
 
 module.exports = router;
-
-// Adds working simple api-routes GET method, as well as working Ticket Model 
