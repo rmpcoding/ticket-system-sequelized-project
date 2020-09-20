@@ -2,7 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyparser = require('body-parser');
 const { static } = require('express');
-const Routes = require('./controllers/ticket_controllers');
+const apiRoutes = require('./routes/api-routes');
 const db = require('./models');
 
 const app = express();
@@ -17,9 +17,9 @@ app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
 app.use(static('public'))
 
-app.use(Routes)
+app.use(apiRoutes)
 
-db.sequelize.sync().then(function() {
+db.sequelize.sync({ force: true }).then( () => {
   app.listen(PORT, () => {
     console.log(`App is now listening on port: ${PORT}`)
   })

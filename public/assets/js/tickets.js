@@ -14,6 +14,8 @@ form.addEventListener('submit', function (event) {
         object[key] = value;
     });
 
+    console.log(object)
+
     // Utilize fetch method to POST data from form to controller routes api
     fetch('/api/tickets', {
         method: 'POST',
@@ -21,10 +23,12 @@ form.addEventListener('submit', function (event) {
         body: JSON.stringify(object),
     })
         .then((res) => {
+            console.log('inside fetch but halfway through')
             return res;
         })
         .then((data) => {
             // quietly refreshes page to display POST data
+            console.log('finished the fetch method, so uncomment out the refresh page function')
             location.reload();
             return data;
         });

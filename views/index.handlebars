@@ -8,8 +8,11 @@
 
 <main>
   <section class="section">
-    <form class="form" action="/api/tickets" method="POST">
-      <div class="form-group">
+    <form class="form">
+      <div class="form-group"> 
+        {{!-- Took out ACTION and METHOD:  
+              action="/api/tickets" method="POST"
+        --}}
         <label class="label" for="ticket_name">Describe Issue:</label>
       </div>
       <input class="form-input" type="text" id="ticket_name" name="ticket_name" /><br /><br />
@@ -21,7 +24,7 @@
     <div class="grid-container">
       <div class="grid-container-item">
         <ul class="list">
-          {{#each tickets}}
+          {{#each ticket}}
           {{#unless this.completed}}
           <p class="item-todo" data-id={{this.id}}>{{this.id}}. 
             <span>{{this.ticket_name}}</span> 
@@ -37,7 +40,7 @@
 
       <div class="grid-container-item">
         <ul class="list completed-list">
-          {{#each tickets}}
+          {{#each ticket}}
             {{#if this.completed}}
             <p class="item" data-id={{this.id}}>{{this.id}}. 
               <span>{{this.ticket_name}}</span> 
