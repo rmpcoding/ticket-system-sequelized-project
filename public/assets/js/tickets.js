@@ -54,7 +54,7 @@ sendButton.forEach(button => {
 
         console.log(object)
         
-        fetch(`/api/tickets/${id}`, {
+        fetch(`/api/update/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(object),
@@ -86,7 +86,7 @@ deleteButton.forEach(button => {
             return object;
         })
 
-        fetch(`/api/tickets/${id}`, {
+        fetch(`/api/delete/${id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(object),

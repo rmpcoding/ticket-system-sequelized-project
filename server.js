@@ -17,7 +17,7 @@ app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
 app.use(static('public'))
 
-app.use(apiRoutes)
+app.use('/api', apiRoutes)
 
 db.sequelize.sync().then( () => {
   app.listen(PORT, () => {
