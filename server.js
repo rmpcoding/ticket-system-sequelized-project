@@ -19,7 +19,7 @@ app.use(static('public'))
 
 app.use(apiRoutes)
 
-db.sequelize.sync({ force: true }).then( () => {
+db.sequelize.sync().then( () => {
   app.listen(PORT, () => {
     console.log(`App is now listening on port: ${PORT}`)
   })

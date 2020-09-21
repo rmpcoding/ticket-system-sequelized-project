@@ -29,7 +29,7 @@ form.addEventListener('submit', function (event) {
         .then((data) => {
             // quietly refreshes page to display POST data
             console.log('finished the fetch method, so uncomment out the refresh page function')
-            location.reload();
+            // location.reload();
             return data;
         });
 });
