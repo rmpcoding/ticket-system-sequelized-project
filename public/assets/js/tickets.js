@@ -1,5 +1,5 @@
 // Form submit to POST
-// ========================================================================================================
+// ===============================================================================================
 const form = document.querySelector('.form');
 
 form.addEventListener('submit', function (event) {
@@ -14,66 +14,63 @@ form.addEventListener('submit', function (event) {
         object[key] = value;
     });
 
-    console.log(object)
-
-    // Utilize fetch method to POST data from form to controller routes api
-    fetch('/api/tickets', {
+    // Creating fetch request object with submit values
+    const request = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(object),
-    })
+    };
+
+    // Returning object to frontend while quietly reloading page
+    fetch('/api/tickets', request)
         .then((res) => {
-            console.log('inside fetch but halfway through')
             return res;
         })
-        .then((data) => {
-            // quietly refreshes page to display POST data
-            console.log('finished the fetch method, so uncomment out the refresh page function')
-            // location.reload();
-            return data;
+        .then(() => {
+            location.reload();
         });
 });
 
-// Create global variable for unique id
-let id;
-
-// Event listener to UPDATE
-// ========================================================================================================
+// Targeting items to set completed to true
+// ===============================================================================================
 const sendButton = document.querySelectorAll('.btn-send')
 
 sendButton.forEach(button => {
     button.addEventListener('click', (event) => {
         const paragraph = document.querySelectorAll('.item-todo')
         let object = {}
-        // Targets data attribute in HTML to obtain unique id, stores inside an object
+
+        // Targets data attribute to obtain unique button/paragraph id, stores inside request object
         paragraph.forEach(keys => {
-            id = keys.getAttribute('data-id')
-            object.id = id;
-            return object;
+            if (keys.getAttribute('data-id') === button.getAttribute('data-id') ) {
+                id = keys.getAttribute('data-id')
+                object.id = id;
+                return object;
+            }
         })
 
-        console.log(object)
-        
-        fetch(`/api/update/${id}`, {
+        // Creating fetch request object with submit values
+        const request = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(object),
-        })
+        }
+        
+        // Returning object to frontend while quietly reloading page
+        fetch(`/api/update`, request)
             .then((res) => {
                 return res;
             })
-            .then((data) => {
-                // quietly refreshes page to display data
+            .then(() => {
                 location.reload();
-                return data;
             });
     })
 })
 
-const deleteButton = document.querySelectorAll('.btn-delete')
-
 // Event listener to DELETE
 // ========================================================================================================
+const deleteButton = document.querySelectorAll('.btn-delete')
+
 deleteButton.forEach(button => {
     button.addEventListener('click', (event) => {
         const paragraph = document.querySelectorAll('.item')
@@ -81,23 +78,27 @@ deleteButton.forEach(button => {
         
         // Targets data attribute in HTML to obtain unique id, stores inside an object
         paragraph.forEach(keys => {
-            id = keys.getAttribute('data-id')
-            object.id = id;
-            return object;
+            if (keys.getAttribute('data-id') === button.getAttribute('data-id') ) {
+                id = keys.getAttribute('data-id')
+                object.id = id;
+                return object;
+            }
         })
-
-        fetch(`/api/delete/${id}`, {
+        
+        // Creating fetch request object with submit values
+        const request = {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(object),
-        })
+        }
+
+        // Returning object to frontend while quietly reloading page
+        fetch(`/api/delete/${id}`, request)
             .then((res) => {
                 return res;
             })
-            .then((data) => {
-                // quietly refreshes page to display data
+            .then(() => {
                 location.reload();
-                return data;
             });
     })
 })

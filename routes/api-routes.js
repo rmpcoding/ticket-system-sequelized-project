@@ -3,11 +3,13 @@ const router = express.Router();
 const db = require('../models');
 
 // GET route
-router.get('/tickets', (req, res) => {
+router.get('/', (req, res) => {
     db.Ticket.findAll({}).then((tickets) => {
         let hbrs = {
+            // mapping out object because handlebars forbids accessing prototype properties
             Ticket: tickets.map((ticket) => {
                 return {
+                    id: ticket.id,
                     ticket_name: ticket.ticket_name,
                     completed: ticket.completed,
                 };
@@ -17,47 +19,40 @@ router.get('/tickets', (req, res) => {
     });
 });
 
-// GET route by id
-router.get('/find/:id', (req, res) => {
-    db.Ticket.findAll({
-        where: {
-            id: req.params.id,
-        },
+// POST route
+router.post('/api/tickets', (req, res) => {
+    db.Ticket.create({
+        ticket_name: req.body.ticket_name,
+        completed: false,
     }).then((ticket) => {
+        res.json(ticket)
+    });
+});
+
+
+// UPDATE route
+router.put('/api/update', (req, res) => {
+    db.Ticket.update(
+        {
+            completed: true
+        },
+        {
+            where: { 
+                id: parseInt(req.body.id)
+            },
+        }
+    ).then((ticket) => {
         res.json(ticket);
     });
 });
 
-// POST route
-router.post('/tickets', (req, res) => {
-    db.Ticket.create({
-        ticket_name: req.body.ticket_name,
-        completed: false,
-    }).then((submitted) => {
-        res.send(submitted);
-    });
-});
-
 // DELETE route
-router.delete('/delete/:id', (req, res) => {
+router.delete('/api/delete/:id', (req, res) => {
     db.Ticket.destroy({
         where: {
-            id: req.params.id,
+            id: parseInt(req.params.id),
         },
-    }).then(() => {
-        res.send('success');
-    });
-});
-
-router.put('/update', (req, res) => {
-    db.Ticket.update(
-        {
-            ticket_name: req.body.ticket_name,
-        },
-        {
-            where: { id: req.body.id },
-        }
-    ).then((ticket) => {
+    }).then((ticket) => {
         res.json(ticket);
     });
 });
