@@ -8,8 +8,6 @@ const db = require('./models');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-console.log("is there any OUTPUT here!??!?!?!?!!?")
-
 // setting the engine to handle and view handlebars
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
