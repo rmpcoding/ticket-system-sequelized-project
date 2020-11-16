@@ -10,16 +10,7 @@ const db = {};
 
 let sequelize;
 
-console.log(config)
-
 if (config.use_env_variable) {
-  console.log(`=========================================================`)
-  console.log(config.use_env_variable)
-  console.log(`=========================================================`)
-  console.log(process.env[config.use_env_variable])
-  console.log(`=========================================================`)
-  console.log(process.env.JAWSDB_URL)
-  console.log(`=========================================================`)
   sequelize = new Sequelize(process.env.JAWSDB_URL, config);
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
