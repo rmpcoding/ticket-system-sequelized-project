@@ -10,7 +10,7 @@ module.exports = {
     "password": process.env.JAWSDB_PASS,
     "database": process.env.JAWSDB_DB,
     "host": process.env.JAWSDB_HOST,
-    "use_env_variable": process.env.JAWSDB_URL,
+    // "use_env_variable": process.env.JAWSDB_URL,
     "port": 3306,
     "dialect": "mysql"
   },
@@ -22,10 +22,10 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
-    "username": process.env.JAWSDB_USER,
-    "password": process.env.JAWSDB_PASS,
-    "database": process.env.JAWSDB_DB,
-    "host": process.env.JAWSDB_HOST,
+    // "username": process.env.JAWSDB_USER,
+    // "password": process.env.JAWSDB_PASS,
+    // "database": process.env.JAWSDB_DB,
+    // "host": process.env.JAWSDB_HOST,
     "use_env_variable": process.env.JAWSDB_URL,
     "dialect": "mysql"
   }
