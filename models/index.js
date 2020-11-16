@@ -18,7 +18,7 @@ if (config.use_env_variable) {
   console.log(`=========================================================`)
   console.log(process.env[config.use_env_variable])
   console.log(`=========================================================`)
-  console.log(process.env[JAWSDB_URL])
+  console.log(process.env.JAWSDB_URL)
   console.log(`=========================================================`)
   sequelize = new Sequelize(process.env.JAWSDB_URL, config);
 } else {
