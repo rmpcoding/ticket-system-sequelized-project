@@ -1,8 +1,8 @@
 # Ticket-System-Sequelized
 
-A simple, fullstack web application fully accessible for anyone to use. The applications primary function is to display ticket issues a user enters. The user simply types out their IT issue and hits submit. The issue is then displayed on the application such that IT may view and work on it. Ultimately, after the issue at hand is resolved, IT can complete the task's text on the application. 
+A fullstack ticket-issuing project which utilizes an MVC approach to render ticket issue descriptions. The application is both simple and fully accessible for anyone to use. The user simply types out their IT issue and hits submit. The issue is then displayed on the application such that IT may view and work on it. Ultimately, after the issue is resolved, IT can complete the task, thereby disposing the text on the application. 
 
-If you view my other project, "ticket-system-handlebars-project," you will notice their deployments look exactly the same. This is a good thing since the frontend was meant for replication. The major difference are the technologies employed, specifically Sequelize in this project, and standard MySQL in the other project.
+If you view my other project, "ticket-system-handlebars-project," you will notice their deployments look exactly the same. This is a good thing since the frontend was meant for replication. The major difference is the backend technology employed; specifically, Sequelize was used in this project, and vanilla SQL was used in the other.
 
 ## Usage
 
